@@ -11,6 +11,11 @@
 
 <body>
     <x-layouts.nav name="nav" />
+    @if (session('status'))
+        <div class="">
+            {{ session('status') }}
+        </div>
+    @endif
     {{ $slot }}
 </body>
 

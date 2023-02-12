@@ -7,5 +7,5 @@
     </x-slot>
     <h1>Blog {{ $post->id }} {{ $post->title }} </h1>
     <p>{{ $post->body }}</p>
-    <a href="{{ route('blog.index') }}">Regresar</a>
+    <a href="{{ route('posts.index') }}">Regresar</a>
 </x-layouts.app>

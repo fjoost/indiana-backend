@@ -12,10 +12,29 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $posts = Post::get();
-        return view('blog.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
     public function show(Post $post)
     {
-        return view('blog.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post]);
+    }
+    public function create()
+    {
+        return view('posts.create');
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'body' => ['required'],
+        ]);
+
+        $post = new Post();
+        $post->title = $request->input('txtTitle');
+        $post->body = $request->input('txtBody');
+        $post->save();
+
+        session()->flash('status', 'success!');
+        return to_route('posts.index');
     }
 }
