@@ -9,10 +9,13 @@
     <a href="{{ route('posts.create') }}">Create new Post</a>
     <hr>
     @foreach ($posts as $post)
-        </h2>
-        <a href="blog/{{ $post->id }}">
-            {{ $post->title }}
-        </a>
-        <h2>
+        <div style="display: flex; align-items:baseline">
+            <h2>
+                <a href="blog/{{ $post->id }}">
+                    {{ $post->title }}
+                </a>
+            </h2> &nbsp;
+            <a href="{{ route('posts.edit', $post) }}"> Edit</a>
+        </div>
     @endforeach
 </x-layouts.app>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
         $posts = Post::get();
         return view('posts.index', ['posts' => $posts]);
@@ -30,11 +30,30 @@ class PostController extends Controller
         ]);
 
         $post = new Post();
-        $post->title = $request->input('txtTitle');
-        $post->body = $request->input('txtBody');
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
         $post->save();
 
         session()->flash('status', 'success!');
         return to_route('posts.index');
+    }
+    public function edit(Post $post)
+    {
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post)
+    {
+
+        $request->validate([
+            'title' => ['required'],
+            'body' => ['required'],
+        ]);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+
+        session()->flash('status', 'updated!');
+        return to_route('posts.show', $post);
     }
 }

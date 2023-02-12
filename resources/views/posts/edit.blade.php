@@ -5,18 +5,20 @@
     <x-slot name="metaDescription">
         Blog meta description
     </x-slot>
-    <h1>Create new Post </h1>
-    <form action="{{ route('posts.store') }}" method="POST">
-        @csrf
+    <h1> Edit Form of - Blog {{ $post->id }} {{ $post->title }}</h1>
+    <form action="{{ route('posts.update', $post) }}" method="POST">
+
+        @csrf @method('PATCH')
+
         <label for="txtTitle">Title</label>
-        <input type="text" name="title" placeholder="Add Post Title" value="{{ old('title') }}">
+        <input type="text" name="title" placeholder="Add Post Title" value="{{ old('title', $post->title) }}">
         @error('title')
             <br>
             <small style="color:red">{{ $message }}</small>
         @enderror
         <br>
         <label for="txtBody">Body</label>
-        <textarea type="text" name="body" placeholder="Write Post body">{{ old('body') }}</textarea>
+        <textarea type="text" name="body" placeholder="Write Post body">{{ old('body', $post->body) }}</textarea>
         @error('body')
             <br>
             <small style="color:red">{{ $message }}</small>
@@ -24,6 +26,5 @@
         <button type="submit">Save </button>
         <br>
     </form>
-    <br>
     <a href="{{ route('posts.index') }}">Regresar</a>
 </x-layouts.app>
