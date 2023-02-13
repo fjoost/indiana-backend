@@ -8,19 +8,7 @@
     <h1>Create new Post </h1>
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf
-        <label for="txtTitle">Title</label>
-        <input type="text" name="title" placeholder="Add Post Title" value="{{ old('title') }}">
-        @error('title')
-            <br>
-            <small style="color:red">{{ $message }}</small>
-        @enderror
-        <br>
-        <label for="txtBody">Body</label>
-        <textarea type="text" name="body" placeholder="Write Post body">{{ old('body') }}</textarea>
-        @error('body')
-            <br>
-            <small style="color:red">{{ $message }}</small>
-        @enderror
+        @include('posts.form-fields')
         <button type="submit">Save </button>
         <br>
     </form>
