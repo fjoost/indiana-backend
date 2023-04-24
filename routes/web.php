@@ -18,3 +18,7 @@ Route::view('/about', 'about')->name('about');
 Route::get('/login', function () {
     return 'Login page';
 })->name('login');
+
+Route::get('/register', function () {
+    return 'Register page';
+})->name('register');

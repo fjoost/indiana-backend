@@ -35,6 +35,10 @@
                             class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-white {{ request()->routeIs('contact') ? 'text-sky-600 dark:text-white' : 'text-slate-400' }}">
                             Contact
                         </a>
+                        <a href="{{ route('register') }}"
+                            class="px-3 py-2 text-sm font-medium rounded-md hover:text-sky-600 dark:hover:text-white {{ request()->routeIs('contact') ? 'text-sky-600 dark:text-white' : 'text-slate-400' }}">
+                            Register
+                        </a>
                     </div>
                 </div>
             </div>

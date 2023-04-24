@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SavePostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PostController extends Controller
-
-
-
-
+class UserController extends Controller
 {
 
     public function __construct()
